@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FileNinja</title>
+  <link rel="icon" href="logo.png" type="image/png" />
+  <meta name="description" content="Shaima Tools موقع لتحويل وضغط الصور ودمج PDF واستخراج النصوص مباشرة في المتصفح بدون رفع الملفات.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">FileNinja Tools • Image & PDF</div>
+      <div class="menu" id="menu">
+        <button data-tool="convert" class="active">تحويل PNG ↔ JPG / WebP</button>
+        <button data-tool="compress">ضغط الصور</button>
+        <button data-tool="resize">تغيير المقاسات</button>
+        <button data-tool="img2pdf">صورة إلى PDF</button>
+        <button data-tool="mergepdf">دمج PDF</button>
+        <button data-tool="webp">تحويل الصور إلى WebP</button>
+      </div>
+      <div class="ads-placeholder" id="sidebarAd">مكان إعلان AdSense</div>
+      <footer>جميع الأدوات تعمل بالكامل في المتصفح بدون رفع للملفات.</footer>
+    </aside>
+
+    <main class="content">
+      <!-- Convert -->
+      <section id="convert" class="card tool">
+        <h1>تحويل الصور (PNG / JPG / WebP)</h1>
+        <input type="file" id="convertFile" accept="image/png, image/jpeg, image/webp">
+        <div class="preview" id="convertPreview"></div>
+        <div class="row">
+          <button class="btn" id="convertBtn">تحويل</button>
+          <a id="convertDownload" class="link" style="display:none">تحميل</a>
+          <button class="btn reset" id="convertReset">إعادة اختيار الملف</button>
+        </div>
+        <div class="status" id="convertStatus"></div>
+      </section>
+
+      <!-- Compress -->
+      <section id="compress" class="card tool" style="display:none">
+        <h1>ضغط الصور</h1>
+        <input type="file" id="compressFile" accept="image/png, image/jpeg, image/webp">
+        <label>جودة (0.1 - 1.0): <input id="quality" type="range" min="0.1" max="1" step="0.1" value="0.6"></label>
+        <div class="preview" id="compressPreview"></div>
+        <div class="row">
+          <button class="btn" id="compressBtn">ضغط</button>
+          <a id="compressDownload" class="link" style="display:none">تحميل</a>
+          <button class="btn reset" id="compressReset">إعادة اختيار الملف</button>
+        </div>
+        <div class="status" id="compressStatus"></div>
+      </section>
+
+      <!-- Resize -->
+      <section id="resize" class="card tool" style="display:none">
+        <h1>تغيير المقاسات</h1>
+        <input type="file" id="resizeFile" accept="image/png, image/jpeg, image/webp">
+        <div>العرض الجديد (px): <input id="newWidth" type="number" min="1" value="800"></div>
+        <div class="preview" id="resizePreview"></div>
+        <div class="row">
+          <button class="btn" id="resizeBtn">تغيير المقاس</button>
+          <a id="resizeDownload" class="link" style="display:none">تحميل</a>
+          <button class="btn reset" id="resizeReset">إعادة اختيار الملف</button>
+        </div>
+        <div class="status" id="resizeStatus"></div>
+      </section>
+
+      <!-- Img2PDF -->
+      <section id="img2pdf" class="card tool" style="display:none">
+        <h1>تحويل صورة إلى PDF</h1>
+        <input type="file" id="img2pdfFile" accept="image/png, image/jpeg, image/webp">
+        <div class="preview" id="img2pdfPreview"></div>
+        <div class="row">
+          <button class="btn" id="img2pdfBtn">تحويل</button>
+          <a id="img2pdfDownload" class="link" style="display:none">تحميل PDF</a>
+          <button class="btn reset" id="img2pdfReset">إعادة اختيار الملف</button>
+        </div>
+        <div class="status" id="img2pdfStatus"></div>
+      </section>
+
+      <!-- Merge PDF -->
+      <section id="mergepdf" class="card tool" style="display:none">
+        <h1>دمج ملفات PDF</h1>
+        <input type="file" id="mergeFiles" accept="application/pdf" multiple>
+        <div class="row">
+          <button class="btn" id="mergeBtn">دمج وتحميل</button>
+          <a id="mergeDownload" class="link" style="display:none">تحميل PDF المدمج</a>
+        </div>
+        <div class="status" id="mergeStatus"></div>
+      </section>
+
+      <!-- webp -->
+      <!-- تحويل الصور إلى WebP -->
+    <section id="webp" class="card tool" style="display:none">
+        <h1>تحويل الصور إلى WebP</h1>
+
+        <input type="file" id="webpFile" accept="image/*">
+        <div class="preview" id="webpPreview"></div>
+
+        <div class="row">
+            <button class="btn" id="webpBtn">تحويل</button>
+            <button class="btn reset" id="webpReset">إعادة اختيار الملف</button>
+        </div>
+
+        <div class="status" id="webpStatus"></div>
+        <a id="webpDownload" style="display:none" download="converted.webp"></a>
+    </section>
+
+
+      <div class="card"><strong>ملاحظة:</strong> جميع الأدوات تعمل بالكامل في المتصفح.</div>
+    </main>
+  </div>
+
+  <!-- مكتبات خارجية -->
+  <script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js" defer></script>
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
