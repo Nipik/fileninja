@@ -286,19 +286,53 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Responsive */
+/* ====================== Responsive Sidebar Fix (New - Working) ====================== */
+
+/* زر القائمة */
+.sidebar-toggle {
+  display: none;
+}
+
 @media (max-width: 992px) {
-  .sidebar { width: 80px; padding: 2rem 0.5rem; }
-  .sidebar:hover { width: 260px; }
-  .logo, .menu button, footer, .ads-placeholder { display: none; }
-  .sidebar:hover .logo, .sidebar:hover .menu button, .sidebar:hover footer, .sidebar:hover .ads-placeholder { display: block; }
-  .content { margin-right: 80px; }
+
+  /* زر القائمة يظهر فقط هنا */
+  .sidebar-toggle {
+    display: block;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    background: #64f4ac;
+    color: #000;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  /* sidebar تكون مخفية */
+  .sidebar {
+    transform: translateX(100%);
+    width: 260px !important;
+    transition: transform 0.35s ease;
+  }
+
+  /* عند الفتح */
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* المحتوى */
+  .content {
+    margin-right: 0 !important;
+    padding: 2rem 1rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .app { flex-direction: column; }
-  .sidebar { width: 100%; height: auto; position: relative; padding: 1rem; }
-  .content { margin-right: 0; padding: 2rem 1rem; }
-  .row { flex-direction: column; }
-  .btn, .link { width: 90%; margin: 0.5rem auto; }
+  .btn, .link {
+    width: 90%;
+    margin: 0.5rem auto;
+  }
 }

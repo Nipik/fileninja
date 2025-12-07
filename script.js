@@ -165,6 +165,13 @@ document.getElementById('webpBtn').addEventListener('click', async () => {
     status.textContent = 'حدث خطأ أثناء التحويل';
   }
 });
+const toggleBtn = document.getElementById('toggleSidebar');
+const sidebar = document.querySelector('.sidebar');
+
+toggleBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+});
+
 
 
 
